@@ -49,7 +49,7 @@ class SignUpFragment : Fragment() {
                 }
                 it.setImageResource(R.drawable.ic_close)
             }
-            toolbar.toolbarTitle.text = "Register"
+            toolbar.toolbarTitle.text = getString(R.string.register_header)
 
             binding.registerBtn.setOnClickListener {
                 if (validateInputs()) {
@@ -84,7 +84,7 @@ class SignUpFragment : Fragment() {
             when (state) {
                 is UIState.Success<*> -> {
                     val resp = state.data as BaseResponse<SignUpResponse>
-                    snackbar(resp.data?.username ?: "Username gotten")
+                    snackbar(resp.message ?: "Registration Completed")
                     navController.popBackStack()
                 }
                 is UIState.Error -> {

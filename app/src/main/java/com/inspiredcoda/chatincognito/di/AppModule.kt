@@ -15,6 +15,7 @@ import io.ktor.client.features.logging.LogLevel
 import io.ktor.client.features.logging.Logging
 import io.ktor.util.pipeline.PipelineInterceptor
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
 import javax.inject.Singleton
 
 @Module
@@ -37,14 +38,13 @@ class AppModule {
             install(Logging) {
                 level = LogLevel.BODY
             }
-
         }
     }
 
     @Singleton
     @Provides
-    fun providesHttpService(httpClient: HttpClient): HttpService {
-        return HttpServiceImpl(httpClient)
+    fun providesHttpService(httpClient: HttpClient, json: Json): HttpService {
+        return HttpServiceImpl(httpClient, json)
     }
 
     @Singleton
