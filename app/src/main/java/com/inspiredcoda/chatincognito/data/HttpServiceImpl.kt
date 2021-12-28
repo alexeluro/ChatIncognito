@@ -28,7 +28,7 @@ class HttpServiceImpl @Inject constructor(
         return try {
             val response =
                 httpClient.post<BaseResponse<LoginResponse>>(HttpService.Endpoints.Login.url) {
-                    contentType(ContentType.Application.Json)
+//                    contentType(ContentType.Application.Json)
                     body = loginCred
                 }
             if (response.status) {
@@ -36,6 +36,9 @@ class HttpServiceImpl @Inject constructor(
             } else {
                 NetworkEvent.Failure(response.message ?: "An error occurred")
             }
+        } catch (ex: ClientRequestException) {
+            val response = ex.errorResponse()
+            NetworkEvent.Failure(response.message ?: "An error occurred")
         } catch (ex: Exception) {
             NetworkEvent.Failure(ex.message ?: "Error validating user")
         }
@@ -45,7 +48,7 @@ class HttpServiceImpl @Inject constructor(
         return try {
             val response =
                 httpClient.post<HttpResponse>(HttpService.Endpoints.SignUp.url) {
-                    contentType(ContentType.Application.Json)
+//                    contentType(ContentType.Application.Json)
                     body = request
                 }
             if (response.status.value in 200..299) {
