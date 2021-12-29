@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ChatIncognito"
 include ':app'
+include ':dependency'
+include ':Dependencies'
