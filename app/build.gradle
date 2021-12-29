@@ -90,4 +90,8 @@ dependencies {
     // KTX Serialization
     implementation Libs.ktx_serialization
 
+    // Glide
+    implementation Libs.glide
+    kapt Libs.glide_compiler
+
 }

@@ -1,10 +1,17 @@
 package com.inspiredcoda.chatincognito.utils
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Environment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
 
 fun View.show(shouldShow: Boolean) {
     visibility = if (shouldShow) View.VISIBLE else View.GONE
@@ -28,3 +35,21 @@ fun Fragment.hideKeyboard() {
     inputMethodMethod.hideSoftInputFromWindow(requireView().windowToken, 0)
 }
 
+fun Fragment.hasCameraPermission(isGranted: (Boolean) -> Unit) {
+    val hasPermission = ContextCompat.checkSelfPermission(
+        requireActivity(),
+        Manifest.permission.CAMERA
+    ) == PackageManager.PERMISSION_GRANTED
+    isGranted(hasPermission)
+}
+
+fun Fragment.createImageFile(): File {
+    val timeStamp = SimpleDateFormat.getDateTimeInstance().format(Date())
+    val storageDir = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+
+    return File.createTempFile(
+        "profilepic_${timeStamp}_",
+        ".jpg",
+        storageDir
+    )
+}

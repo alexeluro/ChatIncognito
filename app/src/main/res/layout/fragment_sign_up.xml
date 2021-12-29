@@ -26,17 +26,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/register_heading"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Register"-->
-            <!--                android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintHorizontal_bias="0"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="@id/register_heading" />-->
-
             <include
                 android:id="@+id/reg_profile_pic"
                 layout="@layout/custom_profile_pic_container"
