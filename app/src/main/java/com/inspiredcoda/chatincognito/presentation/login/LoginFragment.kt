@@ -66,6 +66,7 @@ class LoginFragment : Fragment() {
             when (state) {
                 is UIState.Success<*> -> {
                     val loginResponse = state.data as LoginResponse
+                    navController.navigate(R.id.action_loginFragment_to_chatFragment)
                     snackbar(loginResponse.username ?: "No name found attached to this user")
                 }
                 is UIState.Error -> {
