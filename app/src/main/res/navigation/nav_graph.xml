@@ -9,17 +9,25 @@
         android:id="@+id/loginFragment"
         android:name="com.inspiredcoda.chatincognito.presentation.login.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.inspiredcoda.chatincognito.presentation.register.SignUpFragment"
         android:label="SignUpFragment"
-        tools:layout="@layout/fragment_sign_up"
-        />
+        tools:layout="@layout/fragment_sign_up" />
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.inspiredcoda.chatincognito.presentation.chat.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat" />
 
 </navigation>

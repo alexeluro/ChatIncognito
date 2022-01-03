@@ -2,7 +2,10 @@ package com.inspiredcoda.chatincognito.utils
 
 import android.app.DatePickerDialog
 import androidx.fragment.app.Fragment
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 fun Fragment.dateDialog(date: (String) -> Unit) {
     val listener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -20,5 +23,11 @@ fun Fragment.dateDialog(date: (String) -> Unit) {
         cal.get(Calendar.DAY_OF_MONTH)
     )
         .show()
+}
 
+fun Long.toDate(): String {
+    val date = Date(this)
+    return SimpleDateFormat("HH:SS", Locale.getDefault()).run {
+        format(date)
+    }
 }
